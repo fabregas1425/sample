@@ -2,6 +2,8 @@ version: '3'
 services:
   db:
     image: mysql:5.7
+    volumes:
+      - mysql-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: root
@@ -13,13 +15,31 @@ services:
     command: rails s -p 3000 -b '0.0.0.0'
     volumes:
       - .:/sample
+      - cache:/cache
     ports:
       - "3000:3000"
     links:
       - db
 
+volumes:
+  mysql-data:
+  cache:
 
+# 初回起動時(ビルド)
 # docker-compose build --no-cache
-# docker-compose run web bundle exec rails webpacker:install
 # docker-compose up -d
+# .env.example をコピーして、.env を作成し、内容を書き換える
 # docker-compose exec web rails db:create
+
+# 起動
+# docker-compose up -d
+
+# 再起動
+# docker-compose restart
+
+# 停止
+# docker-compose stop
+
+# 削除するときはこれ
+# docker-compose down --rmi all --volumes
+
