@@ -1,4 +1,7 @@
 class LoginController < ApplicationController
+  def login_page
+  end
+
   def login
     @user=Login.find_by(email:params[:email],password:params[:password])
     if @user
