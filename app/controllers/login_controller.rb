@@ -1,4 +1,7 @@
 class LoginController < ApplicationController
+
+  before_action :authenticate_user
+
   def login_page
   end
 
@@ -12,7 +15,7 @@ class LoginController < ApplicationController
       flash[:notice]="メールアドレスかパスワードが間違っています"
       @email=params[:email]
       @password=params[:password]
-      render("login/login")
+      render("login/login_page")
     end
   end
 

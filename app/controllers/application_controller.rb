@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+
+    before_action :authenticate_user
+
     def set_current_user
         @current_user = Login.find_by(id: session[:user_id])
     end
