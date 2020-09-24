@@ -1,6 +1,7 @@
 class LoginController < ApplicationController
+  skip_before_action :authenticate_user, only: :login_page
+  skip_before_action :authenticate_user, only: :login
 
-  before_action :authenticate_user
 
   def login_page
   end
@@ -25,4 +26,10 @@ class LoginController < ApplicationController
     redirect_to("/login")
   end
 
+  def authenticate_user
+    if @current_user == nil
+      flash[:notice] = "ログインが必要です"
+      redirect_to("/login")
+    end
+  end
 end
