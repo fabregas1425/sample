@@ -1,5 +1,5 @@
 class LoginController < ApplicationController
-  skip_before_action :authenticate_user, only: [:login_page, :login, :new]
+  skip_before_action :authenticate_user, only: [:login_page, :login, :new, :create]
   
 
 
