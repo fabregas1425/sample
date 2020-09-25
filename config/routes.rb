@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   post "/logout" => "login#logout"
   get "/signup" => "login#new"
+  post "/login/create" => "login#create" 
+
 end
