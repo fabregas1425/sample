@@ -41,7 +41,8 @@ class LoginController < ApplicationController
       flash[:notice] = "ユーザー登録が完了しました"
       redirect_to("/login")
     else
-      render("login/create")
+      flash[:notice] = "正しく入力してください"
+      render("login/new")
     end
   end
   
