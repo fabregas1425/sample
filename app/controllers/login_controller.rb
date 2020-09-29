@@ -27,14 +27,10 @@ class LoginController < ApplicationController
   end
 
   def new
-    @user = Login.new(
-      name: params[:name],
-      email: params[:email],
-      password: params[:password]
-    )
+    @user = Login.new
   end
 
-  def create
+  def create 
     @user = Login.new(
       name: params[:name],
       email: params[:email],
