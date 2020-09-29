@@ -27,7 +27,11 @@ class LoginController < ApplicationController
   end
 
   def new
-   
+    @user = Login.new(
+      name: params[:name],
+      email: params[:email],
+      password: params[:password]
+    )
   end
 
   def create
@@ -41,7 +45,6 @@ class LoginController < ApplicationController
       flash[:notice] = "ユーザー登録が完了しました"
       redirect_to("/login")
     else
-      flash[:notice] = "正しく入力してください"
       render("login/new")
     end
   end
