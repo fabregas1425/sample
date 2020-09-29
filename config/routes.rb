@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   post "/login" => "login#login"
 
   post "/logout" => "login#logout"
+  get "/signup" => "login#new"
+  post "/login/create" => "login#create" 
+
 end
